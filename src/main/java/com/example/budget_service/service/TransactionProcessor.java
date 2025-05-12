@@ -4,6 +4,7 @@ import com.example.budget_service.dto.TransactionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -13,7 +14,8 @@ import java.time.LocalDate;
 @Component
 public class TransactionProcessor {
     private static final Logger logger = LoggerFactory.getLogger(TransactionProcessor.class);
-    private static final String TRANSACTION_SERVICE_URL = "http://localhost:8081/api/transactions";
+    @Value("${transaction.service.url}")
+    private String TRANSACTION_SERVICE_URL;
 
     private final RestTemplate restTemplate;
 

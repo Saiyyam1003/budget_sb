@@ -4,6 +4,7 @@ import com.example.budget_service.dto.BillDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,7 +13,8 @@ import java.time.LocalDate;
 @Component
 public class BillProcessor {
     private static final Logger logger = LoggerFactory.getLogger(BillProcessor.class);
-    private static final String BILL_SERVICE_URL = "http://localhost:8083/api/bills";
+    @Value("${bill.service.url}")
+    private String BILL_SERVICE_URL;
 
     private final RestTemplate restTemplate;
 
